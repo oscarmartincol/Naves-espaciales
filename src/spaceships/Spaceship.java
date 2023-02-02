@@ -14,10 +14,6 @@ public abstract class Spaceship implements ISpaceship{
      */
     protected String name;
     /**
-     * Variable que describe el empuje que tiene la nave.
-     */
-    protected int thrust;
-    /**
      * Variable que describe la velocidad.
      */
     protected int speed;
@@ -26,10 +22,6 @@ public abstract class Spaceship implements ISpaceship{
      * Variable que representa el peso.
      */
     protected int weight;
-    /**
-     * Representa la altura orbital
-     */
-    protected float orbitalHeight;
 
     /**
      * Método para acceder al valor de la variable type.
@@ -48,14 +40,6 @@ public abstract class Spaceship implements ISpaceship{
     }
 
     /**
-     * Método para acceder al valor de la variable thrust.
-     * @return empuje que tiene la nave.
-     */
-    public int getThrust() {
-        return thrust;
-    }
-
-    /**
      * Método para acceder al valor de la variable speed.
      * @return Velocidad de la nave.
      */
@@ -71,14 +55,13 @@ public abstract class Spaceship implements ISpaceship{
         return weight;
     }
 
-    /**
-     * Método para acceder al valor de la variable orbitalHeight.
-     * @return Altura orbital
-     */
-    public float getOrbitalHeight() {
-        return orbitalHeight;
-    }
 
     // Clases abstractas
+
+    public abstract void undock();
+
+    public abstract void destroy();
+
+    public abstract void deactivate();
 
 }
