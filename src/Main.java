@@ -1,5 +1,4 @@
-import spaceships.ShuttleShip;
-import spaceships.Spaceship;
+import spaceships.*;
 
 import java.util.Scanner;
 
@@ -10,11 +9,14 @@ public class Main {
 
         int option;
         Spaceship spaceship;
-        spaceship = null;
         do {
             System.out.println("Sistema listo para una nueva misión");
             System.out.println("Seleccione la misión que desea realizar con el tipo de nave correspondiente:");
-            System.out.println("1.Lanzar carga útil al espacio (Nave de tipo lanzadera).");
+            System.out.println("1.Lanzar carga útil al espacio (nave de tipo lanzadera).");
+            System.out.println("2.Limpiar y regular elevación de la estación espacial internacional (ATV).");
+            System.out.println("3.Estudiar la superficie de Marte (nave no tripulada).");
+            System.out.println("4.Mantenimiento de satélite (nave tripulada).");
+            System.out.println("5.Salir del sistema.");
             option = input.nextInt();
             if(option > 0 && option < 5){
                 spaceship = createShip(option);
@@ -26,8 +28,11 @@ public class Main {
                 else
                     System.out.println("La opción seleccionada no es válida.");
             }
-            System.out.println("Oprima enter para continuar.");
-            inputString.nextLine();
+            if (option != 5){
+                System.out.println("Oprima enter para continuar.");
+                inputString.nextLine();
+            }
+
         }while (option != 5);
     }
 
@@ -48,7 +53,29 @@ public class Main {
                 charginCapability = input.nextInt();
                 spaceship = new ShuttleShip(name, charginCapability);
                 break;
+            case 2:
+                spaceship = new AutomatedTransferVehicle(name,400);
+                break;
+            case 3:
+                spaceship = new UncrewedSpaceship(name, marsData());
+                break;
+            case 4:
+                int crewNumber;
+                System.out.println("Ingrese el número de personas que componen la tripulación.");
+                crewNumber = input.nextInt();
+                spaceship = new CrewedSpaceship(name, crewNumber);
         }
         return spaceship;
+    }
+
+    /**
+     * Método con los datos de la superficie de marte.
+     * @return Datos de Marte.
+     */
+    public static String marsData(){
+        String information;
+        information = "Se encuentra evidencia de Carbono liviano sobre rocas, que indica presencia de vida bacteriana en el " +
+                "pasado. \nSe detecta la generación de metano de un origen desconocido.";
+        return information;
     }
 }

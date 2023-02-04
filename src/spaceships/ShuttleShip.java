@@ -13,7 +13,7 @@ public class ShuttleShip extends Spaceship{
     protected int charginCapability;
 
     /**
-     * Variable que representa si la nave se emcuentra en órbita.
+     * Variable que representa si la nave se encuentra en órbita.
      */
     protected boolean orbitingSpacecraft;
 
@@ -73,10 +73,13 @@ public class ShuttleShip extends Spaceship{
             case 1:
                 undock();
                 endUp();
+                break;
             case 2:
                 destroy();
+                break;
             case 3:
                 deactivate();
+                break;
             default:
                 System.out.println("La opción seleccionada no es válida la nave regresara a la tierra.\n");
                 endUp();
@@ -121,6 +124,7 @@ public class ShuttleShip extends Spaceship{
     public String toString() {
         return "Información de la misión:\n" + "Nombre de la nave: " + this.name +
                 "\nTipo: " + this.type + "\nCapacidad de carga: " + this.charginCapability +
-                "\nPeso: " + this.weight + "Toneladas." + "\nMisión: Lanzar carga al espacio.\n";
+                " toneladas" + "\nPeso: " + this.weight + " Toneladas."
+                + "\nMisión: Lanzar carga al espacio.\n";
     }
 }
